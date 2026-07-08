@@ -50,19 +50,21 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-5 sm:px-8 transition-all duration-300 ${
           scrolled
             ? 'bg-white/92 border-b border-stone-200/80 backdrop-blur-md shadow-sm py-3 sm:py-3.5'
-            : 'bg-gradient-to-b from-white/80 via-white/20 to-transparent py-4 sm:py-5'
+            : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4 sm:py-5'
         }`}
       >
         {/* Logo */}
         <div
-          className="flex items-center gap-3 cursor-pointer select-none text-stone-950"
+          className={`flex items-center gap-3 cursor-pointer select-none ${
+            scrolled ? 'text-stone-950' : 'text-white'
+          }`}
           onClick={() => handleNavClick('hero')}
         >
           <svg width="26" height="26" viewBox="0 0 256 256" fill="currentColor"
             className="transition-transform duration-300 hover:rotate-12">
             <path d="M 256 256 L 128 256 L 0 128 L 128 128 Z M 256 128 L 128 128 L 0 0 L 128 0 Z" />
           </svg>
-          <span className="text-stone-950 text-2xl font-playfair italic tracking-wider font-semibold">
+          <span className="text-2xl font-playfair italic tracking-wider font-semibold">
             Vistanex
           </span>
         </div>
@@ -91,7 +93,9 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => handleNavClick('contacts')}
-            className="hidden md:block bg-stone-950 text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:opacity-90 transition-all active:scale-95 shadow-xs cursor-pointer"
+            className={`hidden md:block text-sm font-semibold px-6 py-2.5 rounded-full hover:opacity-90 transition-all active:scale-95 shadow-xs cursor-pointer ${
+              scrolled ? 'bg-stone-950 text-white' : 'bg-white text-stone-950'
+            }`}
           >
             Inquire Now
           </button>
