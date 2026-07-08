@@ -11,7 +11,7 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
   return (
     <section 
       id="hero"
-      className="relative w-full overflow-hidden h-screen select-none bg-stone-100"
+      className="relative w-full overflow-hidden h-screen select-none bg-black"
       style={{ height: '100dvh' }}
     >
       {/* Background Image Layer - Slightly Blurred */}
