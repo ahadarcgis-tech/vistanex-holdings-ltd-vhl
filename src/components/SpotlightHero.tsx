@@ -28,15 +28,15 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, transparent 60%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 30%, transparent 60%)',
         }}
       />
 
-      {/* Smooth fade into next section (bg-stone-50) */}
+      {/* Black fade at the bottom */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-48 z-10 pointer-events-none"
         style={{
-          background: 'linear-gradient(to top, #fafaf9 0%, transparent 100%)',
+          background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, transparent 100%)',
         }}
       />
 
