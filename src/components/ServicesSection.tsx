@@ -77,8 +77,8 @@ export default function ServicesSection() {
           <div className="w-12 h-[2px] bg-[#e8702a] rounded-full mt-2" />
         </div>
 
-        {/* Horizontal Accordion Layout */}
-        <div className="flex w-full h-[450px] sm:h-[550px] gap-2 sm:gap-4 mt-6">
+        {/* Responsive Accordion Layout (Vertical on mobile, Horizontal on desktop) */}
+        <div className="flex flex-col md:flex-row w-full h-[700px] md:h-[550px] gap-2 md:gap-4 mt-6">
           {services.map((service, idx) => {
             const isActive = activeIdx === idx;
 
@@ -87,7 +87,9 @@ export default function ServicesSection() {
                 key={service.tag}
                 onMouseEnter={() => setActiveIdx(idx)}
                 className={`group relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  isActive ? 'flex-[6] rounded-[2rem]' : 'flex-[1] min-w-[50px] rounded-[3rem]'
+                  isActive 
+                    ? 'flex-[6] rounded-[2rem]' 
+                    : 'flex-[1] min-h-[60px] md:min-h-0 md:min-w-[60px] rounded-[1.5rem] md:rounded-[3rem]'
                 }`}
                 style={{
                   boxShadow: isActive ? '0 20px 50px rgba(0,0,0,0.15)' : 'none',
