@@ -66,7 +66,7 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
         className="hidden sm:block absolute bottom-14 left-10 md:left-14 max-w-[280px] z-30 hero-anim hero-fade"
         style={{ animationDelay: '0.6s' }}
       >
-        <p className="text-sm text-stone-900 leading-relaxed font-medium">
+        <p className="text-base text-white leading-relaxed font-medium">
           Inheriting decades of expert HVAC-R knowledge and construction excellence to deliver premium quality developments.
         </p>
       </div>
@@ -76,7 +76,7 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
         className="absolute bottom-10 sm:bottom-14 left-5 right-5 sm:left-auto sm:right-10 md:right-14 max-w-full sm:max-w-[280px] flex flex-col items-start gap-4 sm:gap-5 z-30 hero-anim hero-fade"
         style={{ animationDelay: '0.75s' }}
       >
-        <p className="text-xs sm:text-sm text-stone-900 leading-relaxed font-medium">
+        <p className="text-sm sm:text-base text-white leading-relaxed font-medium">
           VHL is a pioneering real estate and construction company redefining Bangladesh's skyline through sustainable, modern, and iconic developments.
         </p>
         
