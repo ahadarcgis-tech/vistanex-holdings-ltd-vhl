@@ -61,14 +61,45 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
         </div>
       </div>
 
-      {/* Bottom-Left Paragraph */}
+      {/* Bottom-Left Paragraph — Liquid Glass Card */}
       <div 
         className="hidden sm:block absolute bottom-14 left-10 md:left-14 max-w-[280px] z-30 hero-anim hero-fade"
         style={{ animationDelay: '0.6s' }}
       >
-        <p className="text-base text-white leading-relaxed font-medium">
-          Inheriting decades of expert HVAC-R knowledge and construction excellence to deliver premium quality developments.
-        </p>
+        <div
+          style={{
+            background: 'linear-gradient(135deg, rgba(28,22,16,0.55) 0%, rgba(18,14,10,0.48) 60%, rgba(40,28,16,0.42) 100%)',
+            backdropFilter: 'blur(20px) saturate(160%) brightness(0.9)',
+            WebkitBackdropFilter: 'blur(20px) saturate(160%) brightness(0.9)',
+            borderRadius: '16px',
+            border: '1px solid rgba(255,255,255,0.10)',
+            boxShadow: [
+              'inset 0 1px 0 rgba(255,255,255,0.18)',
+              'inset 0 -1px 0 rgba(0,0,0,0.25)',
+              'inset 1px 0 0 rgba(255,255,255,0.06)',
+              '0 8px 32px rgba(0,0,0,0.35)',
+              '0 2px 8px rgba(232,112,42,0.08)',
+            ].join(', '),
+            padding: '18px 20px',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Glass sheen sweep */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '40%',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 100%)',
+            borderRadius: '16px 16px 0 0',
+            pointerEvents: 'none',
+          }} />
+          <p className="text-base text-white leading-relaxed font-medium" style={{ position: 'relative', zIndex: 1, textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}>
+            Inheriting decades of expert HVAC-R knowledge and construction excellence to deliver premium quality developments.
+          </p>
+        </div>
       </div>
 
       {/* Bottom-Right Block & Call to Action */}
@@ -76,9 +107,42 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
         className="absolute bottom-10 sm:bottom-14 left-5 right-5 sm:left-auto sm:right-10 md:right-14 max-w-full sm:max-w-[280px] flex flex-col items-start gap-4 sm:gap-5 z-30 hero-anim hero-fade"
         style={{ animationDelay: '0.75s' }}
       >
-        <p className="text-sm sm:text-base text-white leading-relaxed font-medium">
-          VHL is a pioneering real estate and construction company redefining Bangladesh's skyline through sustainable, modern, and iconic developments.
-        </p>
+        {/* Liquid Glass Card — Right Description */}
+        <div
+          style={{
+            background: 'linear-gradient(135deg, rgba(28,22,16,0.55) 0%, rgba(18,14,10,0.48) 60%, rgba(40,28,16,0.42) 100%)',
+            backdropFilter: 'blur(20px) saturate(160%) brightness(0.9)',
+            WebkitBackdropFilter: 'blur(20px) saturate(160%) brightness(0.9)',
+            borderRadius: '16px',
+            border: '1px solid rgba(255,255,255,0.10)',
+            boxShadow: [
+              'inset 0 1px 0 rgba(255,255,255,0.18)',
+              'inset 0 -1px 0 rgba(0,0,0,0.25)',
+              'inset 1px 0 0 rgba(255,255,255,0.06)',
+              '0 8px 32px rgba(0,0,0,0.35)',
+              '0 2px 8px rgba(232,112,42,0.08)',
+            ].join(', '),
+            padding: '18px 20px',
+            width: '100%',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Glass sheen sweep */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '40%',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 100%)',
+            borderRadius: '16px 16px 0 0',
+            pointerEvents: 'none',
+          }} />
+          <p className="text-sm sm:text-base text-white leading-relaxed font-medium" style={{ position: 'relative', zIndex: 1, textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}>
+            VHL is a pioneering real estate and construction company redefining Bangladesh's skyline through sustainable, modern, and iconic developments.
+          </p>
+        </div>
         
         <button 
           onClick={onStartExploring}
