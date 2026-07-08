@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
-const HERO_BG_IMAGE = "/hero-bg.jpg";
+const HERO_BG_IMAGE = "/hero-bg-new.png";
 
 interface SpotlightHeroProps {
   onStartExploring: () => void;
