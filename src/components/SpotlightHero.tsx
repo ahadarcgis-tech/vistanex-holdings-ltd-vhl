@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
-const HERO_BG_IMAGE = "/hero-bg-new.png";
+const HERO_BG_IMAGE = "/hero-bg.jpg";
 
 interface SpotlightHeroProps {
   onStartExploring: () => void;
@@ -28,13 +28,13 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
       <div 
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.3) 35%, transparent 55%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 40%, transparent 60%)',
         }}
       />
 
       {/* Heading Content Layer */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex flex-col items-center text-center px-5 pointer-events-none z-30">
-        <h1 className="text-stone-950 leading-[0.95]">
+        <h1 className="text-white leading-[0.95]">
           <span 
             className="block font-playfair italic font-normal text-5xl sm:text-7xl md:text-8xl hero-anim hero-reveal"
             style={{ 
