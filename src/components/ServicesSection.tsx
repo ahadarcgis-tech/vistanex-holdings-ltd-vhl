@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const services = [
@@ -41,10 +41,12 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const [activeIdx, setActiveIdx] = useState(0);
+
   return (
     <section
       id="services"
-      className="relative w-full bg-stone-50 py-28 px-5 sm:px-10 overflow-hidden"
+      className="relative w-full bg-stone-50 py-28 px-4 sm:px-8 overflow-hidden"
     >
       {/* Warm radial accents */}
       <div
@@ -60,10 +62,9 @@ export default function ServicesSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto">
-
+      <div className="relative max-w-7xl mx-auto flex flex-col items-center">
         {/* Section header */}
-        <div className="mb-16 flex flex-col gap-4 max-w-xl">
+        <div className="mb-14 flex flex-col items-center text-center gap-4 max-w-2xl">
           <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#e8702a]">
             What We Build
           </span>
@@ -73,108 +74,71 @@ export default function ServicesSection() {
           <p className="text-stone-600 text-base leading-relaxed font-medium">
             From construction to sustainability, VHL delivers end-to-end real estate excellence rooted in decades of Tritech engineering expertise.
           </p>
-          <div className="w-12 h-[2px] bg-[#e8702a] rounded-full mt-1" />
+          <div className="w-12 h-[2px] bg-[#e8702a] rounded-full mt-2" />
         </div>
 
-        {/* 2×3 Card Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service) => (
-            <div
-              key={service.tag}
-              className="group relative flex flex-col overflow-hidden cursor-pointer"
-              style={{
-                borderRadius: '22px',
-                background: 'rgba(18,14,10,0.96)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: [
-                  'inset 0 1px 0 rgba(255,255,255,0.07)',
-                  '0 4px 24px rgba(0,0,0,0.18)',
-                ].join(', '),
-                transition: 'transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = [
-                  'inset 0 1px 0 rgba(255,255,255,0.09)',
-                  '0 16px 48px rgba(0,0,0,0.28)',
-                  '0 0 0 1px rgba(232,112,42,0.18)',
-                ].join(', ');
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
-                (e.currentTarget as HTMLDivElement).style.boxShadow = [
-                  'inset 0 1px 0 rgba(255,255,255,0.07)',
-                  '0 4px 24px rgba(0,0,0,0.18)',
-                ].join(', ');
-              }}
-            >
-              {/* Image area */}
-              <div className="relative w-full overflow-hidden" style={{ height: '220px' }}>
+        {/* Horizontal Accordion Layout */}
+        <div className="flex w-full h-[450px] sm:h-[550px] gap-2 sm:gap-4 mt-6">
+          {services.map((service, idx) => {
+            const isActive = activeIdx === idx;
+
+            return (
+              <div
+                key={service.tag}
+                onMouseEnter={() => setActiveIdx(idx)}
+                className={`group relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  isActive ? 'flex-[6] rounded-[2rem]' : 'flex-[1] min-w-[50px] rounded-[3rem]'
+                }`}
+                style={{
+                  boxShadow: isActive ? '0 20px 50px rgba(0,0,0,0.15)' : 'none',
+                }}
+              >
+                {/* Background Image */}
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  style={{ borderRadius: '22px 22px 0 0' }}
-                />
-                {/* Dark gradient overlay fading into card body */}
-                <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   style={{
-                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(18,14,10,0.55) 85%, rgba(18,14,10,0.98) 100%)',
-                    borderRadius: '22px 22px 0 0',
+                    transform: isActive ? 'scale(1.05)' : 'scale(1.2)',
                   }}
                 />
-                {/* Tag pill */}
-                <div className="absolute top-4 left-4">
-                  <span
-                    style={{
-                      background: 'rgba(18,14,10,0.70)',
-                      backdropFilter: 'blur(10px)',
-                      WebkitBackdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(255,255,255,0.14)',
-                      borderRadius: '999px',
-                      padding: '4px 12px',
-                      fontSize: '9px',
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: 700,
-                      letterSpacing: '0.16em',
-                      color: 'rgba(255,255,255,0.75)',
-                      textTransform: 'uppercase' as const,
-                    }}
-                  >
-                    {service.tag}
-                  </span>
-                </div>
-              </div>
 
-              {/* Card body */}
-              <div className="flex flex-col flex-1 gap-3 px-6 py-5">
-                <h3
-                  className="text-white font-semibold leading-snug tracking-tight"
-                  style={{ fontSize: '17px' }}
+                {/* Overlays */}
+                <div
+                  className={`absolute inset-0 transition-opacity duration-700 ${
+                    isActive
+                      ? 'bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-100'
+                      : 'bg-black/40 opacity-100 group-hover:bg-black/20'
+                  }`}
+                />
+
+                {/* Content (Visible only when active) */}
+                <div
+                  className={`absolute inset-0 flex flex-col justify-end p-6 sm:p-10 transition-all duration-700 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'
+                  }`}
                 >
-                  {service.title}
-                </h3>
-                <p className="text-stone-400 text-sm leading-relaxed font-medium flex-1">
-                  {service.desc}
-                </p>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-3 sm:px-4 py-1.5 text-[10px] font-mono font-bold tracking-widest text-white uppercase bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                      {service.tag}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-playfair italic text-white mb-3 leading-tight drop-shadow-md">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-stone-300 text-sm sm:text-base font-medium leading-relaxed max-w-lg mb-6 sm:mb-8 drop-shadow-sm">
+                    {service.desc}
+                  </p>
 
-                {/* Bottom row */}
-                <div className="flex items-center justify-between pt-3 mt-auto border-t border-white/[0.06]">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-stone-600">
-                    VHL
-                  </span>
-                  <button
-                    className="flex items-center gap-1.5 text-xs font-semibold text-[#e8702a] hover:text-orange-400 transition-colors group/btn"
-                    aria-label={`Learn more about ${service.title}`}
-                  >
-                    Learn More
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  <button className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white bg-[#e8702a] hover:bg-orange-500 w-fit px-6 py-3 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md">
+                    Learn More <ArrowUpRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
