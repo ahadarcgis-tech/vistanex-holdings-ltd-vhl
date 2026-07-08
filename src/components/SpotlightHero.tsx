@@ -33,7 +33,7 @@ export default function SpotlightHero({ onStartExploring }: SpotlightHeroProps) 
       />
 
       {/* Heading Content Layer */}
-      <div className="absolute top-[16%] left-0 right-0 flex flex-col items-center text-center px-5 pointer-events-none z-30">
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex flex-col items-center text-center px-5 pointer-events-none z-30">
         <h1 className="text-stone-950 leading-[0.95]">
           <span 
             className="block font-playfair italic font-normal text-5xl sm:text-7xl md:text-8xl hero-anim hero-reveal"
